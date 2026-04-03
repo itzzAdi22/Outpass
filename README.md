@@ -204,7 +204,7 @@ If you want a real database-backed deployment later, set:
 
 ### Vercel
 
-This repository also includes a root [`vercel.json`](./vercel.json) and [`index.js`](./index.js) so Vercel can detect the project as an Express deployment.
+This repository also includes a [`vercel.json`](./vercel.json) and [`api/index.js`](./api/index.js) so Vercel can detect the project as an Express deployment.
 
 If you deploy on Vercel, set:
 
