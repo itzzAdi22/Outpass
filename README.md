@@ -211,7 +211,7 @@ If you deploy on Vercel, set:
 - `USE_DEMO_DATA=true`
 - `JWT_SECRET=<any long random string>`
 
-Then redeploy the repo from the project root, not the `frontend` subfolder.
+Then redeploy the repo from the project root, not the `frontend` subfolder. The root build script also copies the React build into a top-level `public` folder for Vercel compatibility.
 
 ## Troubleshooting
 
