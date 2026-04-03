@@ -1,0 +1,21 @@
+{
+  "users": [
+    {
+      "_id": "admin123",
+      "name": "Admin User",
+      "email": "admin@123",
+      "password": "$2a$12$xjusvCv1LyrC0PdxGLJXsePZ3Gt/8C24TZ6X.nXHoSoD/oI51mZBC",
+      "role": "admin",
+      "createdAt": "2026-03-29T13:41:15.986Z"
+    },
+    {
+      "_id": "student123",
+      "name": "Student User",
+      "email": "student@123",
+      "password": "$2a$12$18q1zYdJK83PwF9rE2BjoejtgjY5fxb0hCQspu02sSuNrWNes3Su2",
+      "role": "student",
+      "createdAt": "2026-03-29T13:41:15.986Z"
+    }
+  ],
+  "outpasses": []
+}

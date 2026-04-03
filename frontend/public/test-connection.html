@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend-Backend Connection Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .result { margin: 10px 0; padding: 10px; border-radius: 5px; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        button { padding: 10px 20px; margin: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Frontend-Backend Connection Test</h1>
+    <p>Open browser console (F12) to see detailed logs</p>
+    
+    <button onclick="testConnection()">Test Connection Again</button>
+    <button onclick="testAdminLogin()">Test Admin Login</button>
+    <button onclick="testStudentLogin()">Test Student Login</button>
+    
+    <div id="result"></div>
+
+    <script src="test.js"></script>
+    <script>
+        async function testAdminLogin() {
+            const resultDiv = document.getElementById('result');
+            try {
+                const response = await fetch('http://localhost:5000/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: 'admin@123',
+                        password: 'admin@123'
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = `<div class="result success">✅ Admin Login Successful! User: ${data.user.name} (${data.user.role})</div>`;
+                } else {
+                    resultDiv.innerHTML = `<div class="result error">❌ Admin Login Failed: ${data.message}</div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="result error">❌ Network Error: ${error.message}</div>`;
+            }
+        }
+        
+        async function testStudentLogin() {
+            const resultDiv = document.getElementById('result');
+            try {
+                const response = await fetch('http://localhost:5000/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: 'student@123',
+                        password: 'student@123'
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = `<div class="result success">✅ Student Login Successful! User: ${data.user.name} (${data.user.role})</div>`;
+                } else {
+                    resultDiv.innerHTML = `<div class="result error">❌ Student Login Failed: ${data.message}</div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="result error">❌ Network Error: ${error.message}</div>`;
+            }
+        }
+    </script>
+</body>
+</html>
