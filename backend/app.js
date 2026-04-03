@@ -10,7 +10,8 @@ const demoAuthRoutes = require('./routes/demo-auth');
 const demoOutPassRoutes = require('./routes/demo-outpass');
 
 const app = express();
-const useDemoData = process.env.USE_DEMO_DATA === 'true';
+const useDemoData =
+  process.env.USE_DEMO_DATA === 'true' || !process.env.MONGODB_URI;
 
 if (!useDemoData) {
   connectDB();

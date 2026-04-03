@@ -202,6 +202,17 @@ If you want a real database-backed deployment later, set:
 - `MONGODB_URI=<your mongodb connection string>`
 - keep `JWT_SECRET` set
 
+### Vercel
+
+This repository also includes a root [`vercel.json`](./vercel.json) and [`index.js`](./index.js) so Vercel can detect the project as an Express deployment.
+
+If you deploy on Vercel, set:
+
+- `USE_DEMO_DATA=true`
+- `JWT_SECRET=<any long random string>`
+
+Then redeploy the repo from the project root, not the `frontend` subfolder.
+
 ## Troubleshooting
 
 ### Common Issues
