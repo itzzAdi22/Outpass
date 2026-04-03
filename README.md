@@ -87,7 +87,7 @@ digital-outpass-system/
    ```
 
 3. **Set up environment variables**
-   Create a `.env` file in the backend directory with:
+   Copy `backend/.env.example` to `backend/.env` and update it:
    ```
    MONGODB_URI=mongodb://localhost:27017/digital-outpass
    JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
@@ -168,8 +168,21 @@ digital-outpass-system/
 
 ### Running in Development Mode
 1. Start MongoDB server
-2. Start backend server: `npm run dev` (in backend directory)
-3. Start frontend server: `npm start` (in frontend directory)
+2. Start both apps from the project root: `npm run dev`
+
+If you prefer separate terminals:
+- Backend: `npm run dev --prefix backend`
+- Frontend: `npm start --prefix frontend`
+
+### Quick Demo Mode
+
+If you want to run the project immediately without MongoDB, use the root command:
+
+```bash
+npm run start:demo
+```
+
+This starts the backend in demo mode with file-based sample data and serves the React build after you run `npm run build`.
 
 ### Building for Production
 1. Frontend: `npm run build` (in frontend directory)

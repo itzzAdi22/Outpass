@@ -10,8 +10,14 @@ const demoAuthRoutes = require('./routes/demo-auth');
 const demoOutPassRoutes = require('./routes/demo-outpass');
 
 const app = express();
+const hasMongoUri = Boolean(process.env.MONGODB_URI);
 const useDemoData =
-  process.env.USE_DEMO_DATA === 'true' || !process.env.MONGODB_URI;
+  process.env.USE_DEMO_DATA === 'true' ||
+  (process.env.USE_DEMO_DATA !== 'false' && !hasMongoUri);
+
+if (!process.env.JWT_SECRET) {
+  process.env.JWT_SECRET = 'local-demo-jwt-secret';
+}
 
 if (!useDemoData) {
   connectDB();
